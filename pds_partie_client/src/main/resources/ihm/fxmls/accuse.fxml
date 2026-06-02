@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.ButtonType?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.DialogPane?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
+
+<!--
+    accuse.fxml — DialogPane chargé via FXMLLoader dans ControllerMain.dialogueAccuse()
+    fx:id injectés dans AccuseController :
+      - personnageChoiceBox : ChoiceBox<EPersonnage>
+      - armeChoiceBox       : ChoiceBox<EArme>
+      - lieuChoiceBox       : ChoiceBox<ELieu>
+    initialize() : remplit les 3 ChoiceBox avec .values() et sélectionne le premier
+-->
+<DialogPane stylesheets="@./main.css"
+            styleClass="dialog-pane"
+            xmlns="http://javafx.com/javafx/21"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="ihm.main_controllers.AccuseController">
+    <content>
+        <VBox spacing="6.0">
+            <padding><Insets top="16" right="20" bottom="8" left="20" /></padding>
+
+            <Label text="⚖  ACCUSATION" styleClass="panel-title" />
+            <Region styleClass="separator-line" prefHeight="1.0" />
+
+            <Region prefHeight="8" />
+            <Label text="Personnage accusé :" styleClass="dialog-label" />
+            <ChoiceBox fx:id="personnageChoiceBox"
+                       styleClass="choice-box"
+                       prefWidth="260.0" maxWidth="Infinity" />
+
+            <Region prefHeight="4" />
+            <Label text="Arme accusée :" styleClass="dialog-label" />
+            <ChoiceBox fx:id="armeChoiceBox"
+                       styleClass="choice-box"
+                       prefWidth="260.0" maxWidth="Infinity" />
+
+            <Region prefHeight="4" />
+            <Label text="Lieu accusé :" styleClass="dialog-label" />
+            <ChoiceBox fx:id="lieuChoiceBox"
+                       styleClass="choice-box"
+                       prefWidth="260.0" maxWidth="Infinity" />
+
+            <Region prefHeight="8" />
+        </VBox>
+    </content>
+    <buttonTypes>
+        <ButtonType fx:constant="OK" />
+        <ButtonType fx:constant="CANCEL" />
+    </buttonTypes>
+</DialogPane>

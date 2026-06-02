@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<config>
+
+    <actions>
+        <mouvement>true</mouvement>
+        <soupcon>true</soupcon>
+        <accusation>true</accusation>
+        <des>true</des>
+        <message_public>true</message_public>
+        <message_private>true</message_private></actions>
+
+    <jeu>
+        <debug_reseau>false</debug_reseau></jeu>
+
+</config>

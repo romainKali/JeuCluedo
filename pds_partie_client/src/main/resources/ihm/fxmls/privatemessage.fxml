@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.ButtonType?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.DialogPane?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
+
+<!--
+    privatemessage.fxml — DialogPane chargé dans ControllerMain.dialoguePrivateMessage()
+    fx:id injectés dans PrivateMessageController :
+      - receiverList : ChoiceBox<String>  (rempli par initChoices(), excluant le joueur local)
+      - messageField : TextField           (getText() retourne le contenu)
+-->
+<DialogPane stylesheets="@./main.css"
+            styleClass="dialog-pane"
+            xmlns="http://javafx.com/javafx/21"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="ihm.main_controllers.PrivateMessageController">
+    <content>
+        <VBox spacing="6.0">
+            <padding><Insets top="16" right="20" bottom="8" left="20" /></padding>
+
+            <Label text="✉  MESSAGE PRIVÉ" styleClass="panel-title" />
+            <Region styleClass="separator-line" prefHeight="1.0" />
+
+            <Region prefHeight="8" />
+            <Label text="Destinataire :" styleClass="dialog-label" />
+            <ChoiceBox fx:id="receiverList"
+                       styleClass="choice-box"
+                       prefWidth="260.0" maxWidth="Infinity" />
+
+            <Region prefHeight="4" />
+            <Label text="Votre message :" styleClass="dialog-label" />
+            <TextField fx:id="messageField"
+                       styleClass="text-input"
+                       promptText="Saisissez votre message…"
+                       maxWidth="Infinity" />
+            <Region prefHeight="8" />
+        </VBox>
+    </content>
+    <buttonTypes>
+        <ButtonType fx:constant="OK" />
+        <ButtonType fx:constant="CANCEL" />
+    </buttonTypes>
+</DialogPane>

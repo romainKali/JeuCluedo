@@ -1,0 +1,15 @@
+bdd
+bdd.jdbc
+enums
+ihm
+ihm.main_controllers
+main
+reseau
+reseau.experts
+reseau.experts.chat
+reseau.experts.erreur
+reseau.experts.general
+reseau.experts.notifications
+reseau.experts.personnel
+reseau.experts.soupcon
+tests_integ

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.ButtonType?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.DialogPane?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
+
+<!--
+    soupcon.fxml — DialogPane chargé via FXMLLoader dans ControllerMain.dialogueSoupcon()
+    fx:id injectés dans SoupconController :
+      - personnageChoiceBox : ChoiceBox<EPersonnage>
+      - armeChoiceBox       : ChoiceBox<EArme>
+    initialize() : remplit les 2 ChoiceBox avec .values() et sélectionne le premier
+    Note : pas de ChoiceBox pour le lieu (le soupçon ne porte que sur personnage + arme)
+-->
+<DialogPane stylesheets="@./main.css"
+            styleClass="dialog-pane"
+            xmlns="http://javafx.com/javafx/21"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="ihm.main_controllers.SoupconController">
+    <content>
+        <VBox spacing="6.0">
+            <padding><Insets top="16" right="20" bottom="8" left="20" /></padding>
+
+            <Label text="🔍  SOUPÇON" styleClass="panel-title" />
+            <Region styleClass="separator-line" prefHeight="1.0" />
+
+            <Region prefHeight="8" />
+            <Label text="Personnage suspecté :" styleClass="dialog-label" />
+            <ChoiceBox fx:id="personnageChoiceBox"
+                       styleClass="choice-box"
+                       prefWidth="260.0" maxWidth="Infinity" />
+
+            <Region prefHeight="4" />
+            <Label text="Arme suspectée :" styleClass="dialog-label" />
+            <ChoiceBox fx:id="armeChoiceBox"
+                       styleClass="choice-box"
+                       prefWidth="260.0" maxWidth="Infinity" />
+
+            <Region prefHeight="8" />
+        </VBox>
+    </content>
+    <buttonTypes>
+        <ButtonType fx:constant="OK" />
+        <ButtonType fx:constant="CANCEL" />
+    </buttonTypes>
+</DialogPane>

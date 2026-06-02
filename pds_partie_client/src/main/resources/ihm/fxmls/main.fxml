@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.text.TextFlow?>
+<?import javafx.scene.layout.StackPane?>
+
+<BorderPane fx:id="root"
+            stylesheets="@./main.css"
+            styleClass="root-pane"
+            maxHeight="-Infinity" maxWidth="-Infinity"
+            minHeight="-Infinity" minWidth="-Infinity"
+            prefHeight="600.0" prefWidth="900.0"
+            xmlns="http://javafx.com/javafx/25"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="ihm.ControllerMain">
+
+    <!-- ===== PANNEAU GAUCHE : Actions ===== -->
+    <left>
+        <VBox styleClass="side-panel" prefWidth="165.0" spacing="0" BorderPane.alignment="CENTER">
+
+            <Label text="ACTIONS" styleClass="panel-title" />
+            <Region styleClass="separator-line" prefHeight="1.0" />
+
+            <!-- Groupe : Partie -->
+            <Label text="PARTIE" styleClass="btn-group-label" />
+            <Button fx:id="demarrer"
+                    mnemonicParsing="false"
+                    onAction="#demarrage"
+                    text="▶  Démarrer"
+                    styleClass="btn-primary"
+                    maxWidth="Infinity" />
+            <Button fx:id="parameteres"
+                    mnemonicParsing="false"
+                    onAction="#ouvrirParametre"
+                    text="⚙  Paramètres"
+                    styleClass="btn-secondary"
+                    maxWidth="Infinity" />
+            <Button fx:id="bdd"
+                    mnemonicParsing="false"
+                    onAction="#ouvrirBDD"
+                    text="🗃  Carnet de notes"
+                    styleClass="btn-secondary"
+                    maxWidth="Infinity" />
+
+            <Region styleClass="separator-line" prefHeight="1.0" />
+
+            <!-- Groupe : Tour de jeu -->
+            <Label text="TOUR DE JEU" styleClass="btn-group-label" />
+            <Button fx:id="lancedes"
+                    mnemonicParsing="false"
+                    onAction="#lancerDes"
+                    text="🎲  Lancer les dés"
+                    styleClass="btn-action"
+                    maxWidth="Infinity" />
+            <Button fx:id="soupcon"
+                    mnemonicParsing="false"
+                    onAction="#soupconner"
+                    text="🔍  Soupçonner"
+                    styleClass="btn-action"
+                    maxWidth="Infinity" />
+            <Button fx:id="refuter"
+                    mnemonicParsing="false"
+                    onAction="#refuterSoupcon"
+                    text="🚫  Réfuter"
+                    styleClass="btn-action"
+                    maxWidth="Infinity" />
+            <Button fx:id="accuse"
+                    mnemonicParsing="false"
+                    onAction="#accuser"
+                    text="⚖  Accuser"
+                    styleClass="btn-danger"
+                    maxWidth="Infinity" />
+
+            <Region styleClass="separator-line" prefHeight="1.0" />
+
+            <!-- Groupe : Chat -->
+            <Label text="CHAT" styleClass="btn-group-label" />
+            <Button mnemonicParsing="false"
+                    onAction="#messagePublic"
+                    text="💬  Message public"
+                    styleClass="btn-secondary"
+                    maxWidth="Infinity" />
+            <Button mnemonicParsing="false"
+                    onAction="#messagePrivate"
+                    text="✉  Message privé"
+                    styleClass="btn-secondary"
+                    maxWidth="Infinity" />
+
+            <!-- Pousse fin de tour vers le bas -->
+            <Region prefHeight="1.0" VBox.vgrow="ALWAYS" />
+            <Region styleClass="separator-line" prefHeight="1.0" />
+
+            <Button fx:id="fintour"
+                    mnemonicParsing="false"
+                    onAction="#mettreFinAuTour"
+                    text="⏭  Fin de tour"
+                    styleClass="btn-end-turn"
+                    maxWidth="Infinity" />
+
+        </VBox>
+    </left>
+
+    <!-- ===== CENTRE : Plateau ===== -->
+    <center>
+        <StackPane styleClass="board-container" BorderPane.alignment="CENTER">
+            <BorderPane fx:id="plateau"
+                        styleClass="cluedo-board"
+                        BorderPane.alignment="CENTER" />
+        </StackPane>
+    </center>
+
+    <!-- ===== DROITE : Infos + Console + Erreurs ===== -->
+    <right>
+        <VBox prefWidth="220.0" spacing="0" styleClass="console-panel" BorderPane.alignment="CENTER">
+
+            <!-- Statut du tour -->
+            <Label text="ÉTAT DU JEU" styleClass="panel-title" />
+            <Region styleClass="separator-line" prefHeight="1.0" />
+            <HBox spacing="6" style="-fx-padding: 6 10 6 10; -fx-background-color: #1a1410;">
+                <Label text="Tour :" styleClass="dialog-label-sub" />
+                <Label fx:id="joueurCourant" text="—" styleClass="dialog-label" />
+            </HBox>
+            <HBox spacing="6" style="-fx-padding: 2 10 8 10; -fx-background-color: #1a1410;">
+                <Label text="Statut :" styleClass="dialog-label-sub" />
+                <Label fx:id="status" text="—" styleClass="dialog-label-sub" />
+            </HBox>
+
+            <!-- Console de jeu -->
+            <Region styleClass="separator-line" prefHeight="1.0" />
+            <Label text="CONSOLE DE JEU" styleClass="panel-title" />
+            <ScrollPane fx:id="capsulJeu"
+                        fitToWidth="true"
+                        styleClass="console-scroll"
+                        VBox.vgrow="ALWAYS">
+                <content>
+                    <TextFlow fx:id="consoleJeu"
+                              styleClass="console-text"
+                              prefWidth="200.0"
+                              minHeight="-Infinity" />
+                </content>
+            </ScrollPane>
+
+            <!-- Zone erreurs -->
+            <Region styleClass="separator-line" prefHeight="1.0" />
+            <Label text="ERREURS" styleClass="panel-title-error" />
+            <ScrollPane fx:id="capsulErreur"
+                        fitToWidth="true"
+                        styleClass="error-scroll"
+                        prefHeight="120.0">
+                <content>
+                    <TextFlow fx:id="affichagErreur"
+                              styleClass="error-text"
+                              prefWidth="200.0"
+                              minHeight="-Infinity" />
+                </content>
+            </ScrollPane>
+
+        </VBox>
+    </right>
+
+    <bottom>
+        <VBox alignment="CENTER" spacing="10" style="-fx-padding: 10 10 20 10; -fx-background-color: #1a1410;" BorderPane.alignment="CENTER">
+            <Label text="VOS CARTES" styleClass="panel-title" />
+            <Region styleClass="separator-line" prefHeight="1.0" maxWidth="800" />
+
+            <HBox fx:id="zoneCartes" alignment="CENTER" spacing="15" prefHeight="150.0">
+            </HBox>
+        </VBox>
+    </bottom>
+
+</BorderPane>

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
+
+<!--
+    login.fxml — chargé en tant que BorderPane dans un Dialog (cf. InterfaceMain.dialogueLogin())
+    Les boutons OK/CANCEL sont ajoutés programmatiquement via dialog.getDialogPane().getButtonTypes()
+    → NE PAS définir de buttonTypes ici.
+-->
+<BorderPane stylesheets="@./main.css"
+            styleClass="login-root"
+            maxHeight="-Infinity" maxWidth="-Infinity"
+            minHeight="-Infinity" minWidth="-Infinity"
+            prefHeight="380.0" prefWidth="420.0"
+            xmlns="http://javafx.com/javafx/25"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="ihm.LoginController">
+
+    <center>
+        <VBox alignment="CENTER" spacing="0" BorderPane.alignment="CENTER">
+
+            <Label text="CLUEDO" styleClass="login-title">
+                <VBox.margin><Insets bottom="20" /></VBox.margin>
+            </Label>
+
+            <VBox styleClass="login-container" maxWidth="300" alignment="CENTER" spacing="10">
+
+                <Label text="Choisissez un personnage :" styleClass="dialog-label" />
+                <!-- fx:id="personList" — injecté dans LoginController -->
+                <ListView fx:id="personList"
+                          styleClass="list-view"
+                          prefHeight="150.0"
+                          maxWidth="Infinity" />
+
+                <Region prefHeight="6" />
+
+                <Label text="Votre pseudo :" styleClass="dialog-label" />
+                <!-- fx:id="nomField" — injecté dans LoginController -->
+                <TextField fx:id="nomField"
+                           styleClass="text-input"
+                           promptText="Entrez votre pseudo…"
+                           maxWidth="Infinity" />
+
+            </VBox>
+
+        </VBox>
+    </center>
+
+</BorderPane>

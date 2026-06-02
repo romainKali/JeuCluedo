@@ -1,0 +1,13 @@
+AutreTest
+exception
+main
+metier.cluedo.carte
+metier.cluedo.plateau
+metier.Jeu
+Plateau
+reseau
+reseau.experts
+reseau.integration
+reseau.integration.Tests
+TestActionsJoueurs
+TestCartes
